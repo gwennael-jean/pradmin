@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  php:
+    build:
+      context: ./services/php
+      args:
+        USER_ID: ${USER_ID:-0}
+        GROUP_ID: ${GROUP_ID:-0}
+    ports:
+      - "80:8000"
+    volumes:
+      - ${SOURCE}:/var/www
+
+  composer:
+    image: composer:2.6
+    volumes:
+      - ${SOURCE}:/app
+
+  redis:
+    image: redis
+    command: --loglevel verbose
