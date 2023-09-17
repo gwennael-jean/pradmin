@@ -21,6 +21,7 @@ services:
     image: bitnami/node
     volumes:
       - ${SOURCE}:/app
+    command: ["npm", "run", "watch"]
 
   redis:
     image: redis
