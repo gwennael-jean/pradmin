@@ -17,6 +17,12 @@ services:
     volumes:
       - ${SOURCE}:/app
 
+  node:
+    image: bitnami/node
+    volumes:
+      - ${SOURCE}:/app
+    command: ["npm", "run", "watch"]
+
   redis:
     image: redis
     command: --loglevel verbose
