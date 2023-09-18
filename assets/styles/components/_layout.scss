@@ -1,0 +1,43 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+// Add additional custom code here
+.app {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 175px auto;
+  grid-template-rows: 57px auto 24px;
+  gap: 0 0;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+}
+
+.header {
+  grid-area: header;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  @extend .bg-body-secondary;
+}
+
+.main {
+  grid-area: main;
+  overflow-y: auto;
+}
+
+.footer {
+  grid-area: footer;
+  text-align: right;
+  font-size: 0.9em;
+  @extend .bg-body-secondary;
+  @extend .border-top;
+}

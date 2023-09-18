@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="app">
+        <div class="header">
+            {% block header %}
+                {% include ".components/topbar.html.twig" %}
+            {% endblock %}
+        </div>
+        <div class="sidebar">
+            <div class="container-fluid">
+                {% block sidebar %}
+
+                {% endblock %}
+            </div>
+        </div>
+        <div class="main">
+            <div class="container-fluid">
+                {% block main %}{% endblock %}
+            </div>
+        </div>
+        <div class="footer">
+            <div class="container-fluid">
+                {% block footer %}
+                    0.0.1
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
