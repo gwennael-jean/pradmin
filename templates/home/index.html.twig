@@ -3,9 +3,14 @@
 {% block title %}Dashboard | {{ parent() }}{% endblock %}
 
 {% block sidebar %}
-    sidebar
+    <div class="mb-3">
+        {% include '.components/cards/card-connections.html.twig' %}
+    </div>
+    <div class="mb-3">
+        {% include '.components/cards/card-informations.html.twig' %}
+    </div>
 {% endblock %}
 
 {% block main %}
-    main
+    {% include '.components/cards/card-database.html.twig' %}
 {% endblock %}
