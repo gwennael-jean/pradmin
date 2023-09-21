@@ -3,6 +3,13 @@ FROM php:8.2
 ARG USER_ID
 ARG GROUP_ID
 
+RUN apt-get update && apt-get install -y \
+    git \
+    zip \
+    libzip-dev
+
+COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
+
 RUN curl -sS https://get.symfony.com/cli/installer | bash \
     && mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
 
@@ -15,6 +22,12 @@ RUN if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then \
     chown --changes --silent --no-dereference --recursive --from=33:33 ${USER_ID}:${GROUP_ID} \
         /home/www-data \
 ;fi
+
+RUN pecl install redis
+
+RUN docker-php-ext-enable redis
+
+RUN docker-php-ext-install zip
 
 USER www-data
 
