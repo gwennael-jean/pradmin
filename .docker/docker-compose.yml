@@ -12,11 +12,6 @@ services:
     volumes:
       - ${SOURCE}:/var/www
 
-  composer:
-    image: composer:2.6
-    volumes:
-      - ${SOURCE}:/app
-
   node:
     image: bitnami/node
     volumes:
