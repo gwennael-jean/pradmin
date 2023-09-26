@@ -1,0 +1,61 @@
+version: '3'
+
+vars:
+  DOCKER_DIR: ".docker"
+  DOCKER_COMPOSE: "docker compose"
+  LARAVEL_ARTISAN: "{{.DOCKER_COMPOSE}} exec php php artisan"
+
+tasks:
+  help:
+    desc: Affichage d'une aide
+    cmds:
+      - "task --list-all"
+
+  docker:up:
+    desc: Démarrage des containers Docker
+    dir: '{{.DOCKER_DIR}}'
+    cmds:
+      - "{{.DOCKER_COMPOSE}} up -d"
+
+  docker:ps:
+    desc: Affichage des containers Docker
+    dir: '{{.DOCKER_DIR}}'
+    cmds:
+      - "{{.DOCKER_COMPOSE}} ps"
+
+  docker:down:
+    desc: Arrêt des containers Docker
+    dir: '{{.DOCKER_DIR}}'
+    cmds:
+      - "{{.DOCKER_COMPOSE}} down"
+
+  docker:build:
+    desc: Build les containers Docker
+    dir: '{{.DOCKER_DIR}}'
+    cmds:
+      - "{{.DOCKER_COMPOSE}} build"
+
+  docker:exec:
+    desc: Exécute une commande bash dans le container PHP
+    dir: '{{.DOCKER_DIR}}'
+    cmds:
+      - "{{.DOCKER_COMPOSE}} exec {{.CLI_ARGS}}"
+
+  docker:php:
+    desc: Exécute une commande bash dans le container
+    dir: '{{.DOCKER_DIR}}'
+    cmds:
+      - "{{.DOCKER_COMPOSE}} exec php bash"
+
+  docker:node:
+    desc: Exécute une commande bash dans le container
+    dir: '{{.DOCKER_DIR}}'
+    cmds:
+      - "{{.DOCKER_COMPOSE}} run --rm node bash"
+
+  app:js:watch:
+    aliases: ["js:watch", "js"]
+    desc: Lancement du watcher Javascript
+    dir: '{{.DOCKER_DIR}}'
+    cmds:
+      - "{{.DOCKER_COMPOSE}} run --rm node npm run watch"
