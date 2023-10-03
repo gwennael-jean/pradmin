@@ -1,9 +1,44 @@
 {% extends '.components/card.html.twig' %}
 
 {% block card_header %}
-    Default
+    <div class="d-flex">
+        <div class="flex-grow-1 ms-3">
+            Default
+        </div>
+        <div class="flex-shrink-0">
+            <button class="btn btn-sm btn-success"
+                    data-bs-toggle="modal" data-bs-target="#form-key-modal"
+            >
+                Add
+            </button>
+        </div>
+    </div>
 {% endblock %}
 
 {% block card_body %}
-    Hello World!
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="width: 1px">#</th>
+                <th>Key</th>
+                <th style="width: 1px">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, name in keys %}
+                <tr>
+                    <td>{{ key }}</td>
+                    <td>{{ name }}</td>
+                    <td>
+                        <button class="btn btn-danger">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    {{ component('FormKeyModal') }}
 {% endblock %}

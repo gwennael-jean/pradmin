@@ -1,0 +1,25 @@
+<div class="modal" {% if modal_id is defined %}id="{{ modal_id }}"{% endif %} tabindex="-1">
+    <div class="{{ (modal_dialog_class is defined ? [modal_dialog_class] : []) | merge(['modal-dialog']) | join(' ') }}">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ block('title') }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {% block body %}{% endblock %}
+            </div>
+            {% if block("footer") is defined %}
+                <div class="modal-footer">
+                    {% block footer %}
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            Save
+                        </button>
+                    {% endblock %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

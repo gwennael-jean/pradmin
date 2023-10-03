@@ -4,13 +4,13 @@
 
 {% block sidebar %}
     <div class="mb-3">
-        {% include '.components/cards/card-connections.html.twig' %}
+        {{ component('ConnectionsCard') }}
     </div>
     <div class="mb-3">
-        {% include '.components/cards/card-informations.html.twig' %}
+        {{ component('InformationsCard') }}
     </div>
 {% endblock %}
 
 {% block main %}
-    {% include '.components/cards/card-database.html.twig' %}
+    {{ component('DatabaseCard') }}
 {% endblock %}

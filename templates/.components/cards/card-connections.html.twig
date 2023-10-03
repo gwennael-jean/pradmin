@@ -5,5 +5,13 @@
 {% endblock %}
 
 {% block card_body %}
-    Hello World!
+    <div class="list-group">
+        {% for database in databases %}
+            <a class="list-group-item list-group-item-action"
+               data-action="live#action"
+               data-action-name="select(database={{ database }})">
+                {{ database }}
+            </a>
+        {% endfor %}
+    </div>
 {% endblock %}
