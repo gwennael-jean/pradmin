@@ -21,3 +21,5 @@ services:
   redis:
     image: redis
     command: --loglevel verbose
+    volumes:
+      - ${REDIS_DATA}:/data
