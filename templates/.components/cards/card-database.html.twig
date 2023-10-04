@@ -16,15 +16,17 @@
 {% endblock %}
 
 {% block card_body %}
-    <table class="table">
-        <thead>
+    <div data-loading="show">Loading ...</div>
+    <div data-loading="hide">
+        <table class="table">
+            <thead>
             <tr>
                 <th style="width: 1px">#</th>
                 <th>Key</th>
                 <th style="width: 1px">Action</th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             {% for key, name in keys %}
                 <tr>
                     <td>{{ key }}</td>
@@ -36,9 +38,9 @@
                     </td>
                 </tr>
             {% endfor %}
-        </tbody>
-    </table>
-
+            </tbody>
+        </table>
+    </div>
 
     {{ component('FormKeyModal') }}
 {% endblock %}

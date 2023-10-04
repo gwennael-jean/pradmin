@@ -7,10 +7,10 @@
 {% block card_body %}
     <div class="list-group">
         {% for database in databases %}
-            <a class="list-group-item list-group-item-action"
+            <a class="list-group-item list-group-item-action {{ database.id == selected ? 'active' : '' }}"
                data-action="live#action"
-               data-action-name="select(database={{ database }})">
-                {{ database }}
+               data-action-name="select(database={{ database.id }})">
+                {{ database.name }}
             </a>
         {% endfor %}
     </div>

@@ -18,6 +18,6 @@ class RedisProvider
 
     public function init(): void
     {
-        $this->redis->select($this->database->getSelectedDatabase());
+        $this->redis->select($this->database->getSelectedDatabaseId());
     }
 }

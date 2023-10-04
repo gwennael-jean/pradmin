@@ -17,10 +17,13 @@ final class ConnectionsCard
 
     public array $databases = [];
 
+    public ?int $selected = null;
+
     public function __construct(
         private RedisProvider $redisProvider,
     )
     {
+        $this->selected = $this->redisProvider->database->getSelectedDatabaseId();
         $this->databases = $this->redisProvider->database->findAll();
     }
 
@@ -29,8 +32,10 @@ final class ConnectionsCard
     {
         $key = (string)u($database)->trimPrefix('db');
 
-        $this->redisProvider->database->setSelectedDatabase((int)$key);
+        $this->redisProvider->database->setSelectedDatabaseId((int)$key);
 
         $this->emit('databaseSelected');
+
+        $this->selected = $this->redisProvider->database->getSelectedDatabaseId();
     }
 }
